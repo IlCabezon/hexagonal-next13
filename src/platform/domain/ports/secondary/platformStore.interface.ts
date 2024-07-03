@@ -8,5 +8,5 @@ export interface IPlatformStorePort {
 
   // actions
   loadPlatforms(): Promise<void>;
-  switchState(): void;
+  switchPlatformState(): void;
 }
