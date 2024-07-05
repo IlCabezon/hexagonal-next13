@@ -1,9 +1,20 @@
-import { IPlatformStorePort } from "../domain/ports/secondary/platformStore.interface";
+import { Platform } from "../domain/platform.entity";
+import { ILoadPlatformsUseCase } from "../domain/ports/primary/loadPlatform.useCase.interface";
+import { ILoadPlatformsRepository } from "../domain/ports/secondary/loadPlatform.repository.interface";
+import { IPlatformStore } from "../domain/ports/secondary/platformStore.interface";
 
-type LoadPlatformsStore = Pick<IPlatformStorePort, "loadPlatforms">;
+export class LoadPlatformsUseCase implements ILoadPlatformsUseCase {
+  _repository: ILoadPlatformsRepository;
+  _store: IPlatformStore;
+  constructor(repository: ILoadPlatformsRepository, store: IPlatformStore) {
+    this._repository = repository;
+    this._store = store;
+  }
 
-const loadPlatforms = async (store: LoadPlatformsStore) => {
-  store.loadPlatforms();
-};
+  async loadPlatforms(): Promise<Platform[]> {
+    const platforms = await this._repository.loadPlatforms();
 
-export { loadPlatforms };
+    this._store.loadPlatforms(platforms);
+    return platforms;
+  }
+}
