@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import {
-  IPlatformState,
-  STORE_NAME,
-} from "../../../platform/domain/ports/secondary/platformStore.interface";
-import { Platform } from "../../../platform/domain/platform.entity";
+import { IPlatformState, STORE_NAME, Platform } from "../../../platform/domain";
 
 export const initialState: IPlatformState = {
   platforms: undefined,

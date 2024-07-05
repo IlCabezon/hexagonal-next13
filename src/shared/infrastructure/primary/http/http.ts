@@ -1,5 +1,4 @@
-import { ICookieHandler } from "../../../domain/ports/secondary/cookiesHandler.interface";
-import { CookiesEnum } from "../../../domain/cookies.enum";
+import { ICookieHandler,CookiesEnum } from "../../../domain";
 import { JSCookieHandler } from "../../secondary/jsCookie";
 
 interface IHeaders {

@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { PlatformRepository } from "../platform.repository";
-import { IPlatformRepository } from "../../../domain/ports/secondary/platformRepository.interface";
+import { IPlatformRepository } from "../../../domain";
 
 export const useLoadPlatformsRepositoryImplementation =
   (): IPlatformRepository => {

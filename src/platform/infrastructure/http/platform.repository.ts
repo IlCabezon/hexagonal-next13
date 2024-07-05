@@ -1,10 +1,6 @@
-import {
-  http,
-  ResponseBaseDto,
-} from "../../../shared/infrastructure/primary/http";
-import { Platform } from "../../../platform/domain/platform.entity";
-import { IPlatformRepository } from "../../../platform/domain/ports/secondary/platformRepository.interface";
-import { API_PATHS } from "../../../shared/domain/constants/apiPaths";
+import { http, ResponseBaseDto } from "../../../shared/infrastructure";
+import { API_PATHS } from "../../../shared/domain";
+import { Platform, IPlatformRepository } from "../../../platform/domain";
 import { SwitchPlatformStateDto } from "./dto/switchPlatformState-request.dto";
 
 export class PlatformRepository implements IPlatformRepository {

@@ -1,9 +1,5 @@
-import { MENU } from "../../../domain/menu.enum";
-import {
-  IMenuState,
-  MENU_STORE_NAME,
-} from "../../../domain/ports/secondary/IMenuStore.interface";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { MENU, IMenuState, MENU_STORE_NAME } from "../../../domain";
 
 export const initialState: IMenuState = {
   menu: MENU.HOME,

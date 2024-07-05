@@ -1,8 +1,7 @@
-import React, { useCallback } from "react";
-import { IMenuStore } from "@/shared/domain/ports/secondary/IMenuStore.interface";
+import { useCallback } from "react";
+import { IMenuStore, MENU } from "../../../domain";
 import { RootState, useAppDispatch, useAppSelector } from "../../../../config";
 import { menuSlice } from "./menuSlice";
-import { MENU } from "@/shared/domain/menu.enum";
 
 const menuSelector = (state: RootState) => state.menuSlice;
 const { setMenu: setMenuAction } = menuSlice.actions;

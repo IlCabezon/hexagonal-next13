@@ -1,19 +1,24 @@
-import { Platform } from "../../domain/platform.entity";
-import { useLoadPlatformsRepositoryImplementation, useSwitchPlatformStateRepositoryImplementation } from "../../infrastructure/http";
-import { usePlatformStoreImlementation } from "../../infrastructure/store/platformStore.implementation";
-import { useSwitchPlatformState } from "../hooks/useSwitchPlatformState";
+import { Platform } from "../../domain";
+import {
+  useLoadPlatformsRepositoryImplementation,
+  useSwitchPlatformStateRepositoryImplementation,
+  usePlatformStoreImlementation,
+} from "../../infrastructure/";
+import { useSwitchPlatformState } from "../hooks";
 
 type Props = {
   platform: Platform;
 };
 
 export default function SwitchStateButton({ platform }: Props) {
-  const switchRepositoryImplementation = useSwitchPlatformStateRepositoryImplementation();
-  const loadRepositoryImplementation = useLoadPlatformsRepositoryImplementation();
+  const switchRepositoryImplementation =
+    useSwitchPlatformStateRepositoryImplementation();
+  const loadRepositoryImplementation =
+    useLoadPlatformsRepositoryImplementation();
   const repository = {
     ...switchRepositoryImplementation,
     ...loadRepositoryImplementation,
-  }
+  };
   const store = usePlatformStoreImlementation();
   const { switchPlatformState } = useSwitchPlatformState(repository, store);
 

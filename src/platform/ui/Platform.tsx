@@ -1,10 +1,9 @@
-import { usePlatformStoreImlementation } from "../infrastructure/store/platformStore.implementation";
-import { useLoadPlatformsRepositoryImplementation } from "../infrastructure/http";
-import { useLoadPlatforms } from "./hooks/useLoadPlatforms";
-import { useMenuStoreImplementation } from "../../shared/infrastructure/secondary/menu-store";
 import { useEffect } from "react";
-import { MENU } from "../../shared/domain/menu.enum";
+import { MENU } from "../../shared/domain";
+import { useMenuStoreImplementation } from "../../shared/infrastructure";
+import { useLoadPlatforms } from "./hooks";
 import { SwitchStateButton } from "./components";
+import { usePlatformStoreImlementation, useLoadPlatformsRepositoryImplementation } from "../infrastructure";
 
 function GoBack() {
   const { setMenu } = useMenuStoreImplementation();

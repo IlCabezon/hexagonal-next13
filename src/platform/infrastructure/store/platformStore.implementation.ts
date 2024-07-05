@@ -1,8 +1,7 @@
 import { useCallback } from "react";
 import { RootState, useAppDispatch, useAppSelector } from "../../../config";
-import { Platform } from "../../domain/platform.entity";
+import { Platform, IPlatformStore } from "../../domain";
 import { platformSlice } from "./platformSlice";
-import { IPlatformStore } from "../../domain/ports/secondary/platformStore.interface";
 
 const platformSelector = (state: RootState) => state.platformSlice;
 const {

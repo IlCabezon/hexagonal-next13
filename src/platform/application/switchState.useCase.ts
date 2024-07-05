@@ -1,7 +1,9 @@
-import { Platform } from "../domain/platform.entity";
-import { ISwitchPlatformStateUseCase } from "../domain/ports/primary/switchPlatformState.useCase.interface";
-import { IPlatformStore } from "../domain/ports/secondary/platformStore.interface";
-import { IPlatformRepository } from "../domain/ports/secondary/platformRepository.interface";
+import {
+  Platform,
+  ISwitchPlatformStateUseCase,
+  IPlatformStore,
+  IPlatformRepository,
+} from "../domain";
 
 export class SwitchPlatformStateUseCase implements ISwitchPlatformStateUseCase {
   _repository: Partial<IPlatformRepository>;

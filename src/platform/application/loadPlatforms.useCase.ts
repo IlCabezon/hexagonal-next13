@@ -1,7 +1,9 @@
-import { Platform } from "../domain/platform.entity";
-import { ILoadPlatformsUseCase } from "../domain/ports/primary/loadPlatform.useCase.interface";
-import { IPlatformRepository } from "../domain/ports/secondary/platformRepository.interface";
-import { IPlatformStore } from "../domain/ports/secondary/platformStore.interface";
+import {
+  Platform,
+  ILoadPlatformsUseCase,
+  IPlatformRepository,
+  IPlatformStore,
+} from "../domain";
 
 export class LoadPlatformsUseCase implements ILoadPlatformsUseCase {
   _repository: Partial<IPlatformRepository>;

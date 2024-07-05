@@ -1,8 +1,10 @@
 import { useCallback, useMemo } from "react";
-import { LoadPlatformsUseCase } from "../../application/loadPlatforms.useCase";
-import { ILoadPlatformsUseCase } from "../../domain/ports/primary/loadPlatform.useCase.interface";
-import { IPlatformRepository } from "../../domain/ports/secondary/platformRepository.interface";
-import { IPlatformStore } from "../../domain/ports/secondary/platformStore.interface";
+import { LoadPlatformsUseCase } from "../../application";
+import {
+  ILoadPlatformsUseCase,
+  IPlatformRepository,
+  IPlatformStore,
+} from "../../domain";
 
 export const useLoadPlatforms = (
   repository: IPlatformRepository,
