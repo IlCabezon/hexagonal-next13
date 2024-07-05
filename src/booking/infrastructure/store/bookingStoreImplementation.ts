@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from "react";
+import { useCallback } from "react";
 import { Booking, IBookingStore } from "../../domain";
 import { RootState, useAppDispatch, useAppSelector } from "../../../config";
 import { bookingSlice } from "./bookingSlice";

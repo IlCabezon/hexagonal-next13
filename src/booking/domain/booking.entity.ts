@@ -45,6 +45,25 @@ export class Booking {
 
   constructor(booking: IBooking) {
     this._id = booking._id;
+    this.customer = booking.customer;
+    this.supplier = booking.supplier;
+    this.numberRequest = booking.numberRequest;
+    this.date = booking.date;
+    this.startTime = booking.startTime;
+    this.endTime = booking.endTime;
+    this.reference = booking.reference;
+    this.platform = booking.platform;
+    this.palletsQuantity = booking.palletsQuantity;
+    this.lumpsQuantity = booking.lumpsQuantity;
+    this.volume = booking.volume;
+    this.driverName = booking.driverName;
+    this.driverRut = booking.driverRut;
+    this.vehiclePatent = booking.vehiclePatent;
+    this.peonetaName = booking.peonetaName;
+    this.peonetaRut = booking.peonetaRut;
+    this.observations = booking.observations;
+    this.deleted = booking.deleted;
+    this.state = booking.state;
   }
 
   toJSON(): IBooking {
