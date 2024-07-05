@@ -1,10 +1,16 @@
 import { usePlatformStoreImlementation } from "../infrastructure/store/platformStore.implementation";
 import { useLoadPlatformsRepositoryImplementation } from "../infrastructure/http/loadPlatforms/loadPlatforms.implementation";
 import { useLoadPlatforms } from "./hooks/useLoadPlatforms";
+import { useMenuStoreImplementation } from "../../shared/infrastructure/secondary/menu-store";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
- 
-export default function Platform() { 
+import { MENU } from "@/shared/domain/menu.enum";
+
+function GoBack() {
+  const { setMenu } = useMenuStoreImplementation();
+  return <button onClick={() => setMenu(MENU.HOME)}>Ir a home</button>;
+}
+
+export default function Platform() {
   const repository = useLoadPlatformsRepositoryImplementation();
   const store = usePlatformStoreImlementation();
   const { loadPlatforms } = useLoadPlatforms(repository, store);
@@ -24,7 +30,7 @@ export default function Platform() {
           {platform.numberPlatform} - {`${platform.state}`}
         </div>
       ))}
-      <Link to={"/"}>Ir a home</Link>
+      <GoBack />
     </div>
   );
 }
