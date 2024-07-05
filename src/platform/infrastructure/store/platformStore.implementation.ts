@@ -13,7 +13,7 @@ export const usePlatformStoreImlementation = (): IPlatformStore => {
 
   const loadPlatforms = useCallback(
     (platforms: Platform[]) => {
-      dispatch(loadPlatformAction(platforms) as any);
+      dispatch(loadPlatformAction(platforms));
     },
     [dispatch]
   );
