@@ -1,11 +1,15 @@
 import { useCallback } from "react";
 import { RootState, useAppDispatch, useAppSelector } from "../../../config";
-import { Platform } from "@/platform/domain/platform.entity";
+import { Platform } from "../../domain/platform.entity";
 import { platformSlice } from "./platformSlice";
-import { IPlatformStore } from "@/platform/domain/ports/secondary/platformStore.interface";
+import { IPlatformStore } from "../../domain/ports/secondary/platformStore.interface";
 
 const platformSelector = (state: RootState) => state.platformSlice;
-const { loadPlatforms: loadPlatformAction } = platformSlice.actions;
+const {
+  loadPlatforms: loadPlatformAction,
+  setCurrentPlatform: setCurrenPlatformAction,
+  switchPlatformState: SwitchPlatformStateAction,
+} = platformSlice.actions;
 
 export const usePlatformStoreImlementation = (): IPlatformStore => {
   const dispatch = useAppDispatch();
@@ -18,12 +22,25 @@ export const usePlatformStoreImlementation = (): IPlatformStore => {
     [dispatch]
   );
 
-  const switchPlatformState = useCallback(
-    (state: Boolean) => {
-      dispatch(switchPlatformState(state) as any);
+  const setCurrentPlatform = useCallback(
+    (platform: Platform) => {
+      dispatch(setCurrenPlatformAction(platform));
     },
     [dispatch]
   );
 
-  return { platforms, currentPlatform, loadPlatforms, switchPlatformState };
+  const switchPlatformState = useCallback(
+    (state: Boolean) => {
+      dispatch(SwitchPlatformStateAction(state));
+    },
+    [dispatch]
+  );
+
+  return {
+    platforms,
+    currentPlatform,
+    loadPlatforms,
+    switchPlatformState,
+    setCurrentPlatform,
+  };
 };

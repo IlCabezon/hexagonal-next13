@@ -19,5 +19,6 @@ export interface IPlatformStore {
 
   // actions
   loadPlatforms(platforms: Platform[]): void;
-  switchPlatformState(state: boolean): void;
+  setCurrentPlatform(platform: Platform): void;
+  switchPlatformState(state: Boolean): void;
 }

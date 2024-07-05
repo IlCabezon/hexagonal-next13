@@ -1,20 +1,23 @@
 interface IPlatform {
+  _id: string;
   numberPlatform: string;
   openingTime: string;
   closingTime: string;
   Ability: string;
-  state: boolean;
-  deleted: boolean;
+  state: Boolean;
+  deleted: Boolean;
 }
 export class Platform {
+  _id: string;
   numberPlatform: string;
   openingTime: string;
   closingTime: string;
   Ability: string;
-  state: boolean;
-  deleted: boolean;
+  state: Boolean;
+  deleted: Boolean;
 
   constructor(platform: IPlatform) {
+    this._id = platform._id;
     this.numberPlatform = platform.numberPlatform;
     this.openingTime = platform.openingTime;
     this.closingTime = platform.closingTime;
@@ -23,8 +26,10 @@ export class Platform {
     this.deleted = platform.deleted;
   }
 
-  toJSON() {
+  toJSON(): IPlatform {
     return {
+      _id: this._id,
+
       numberPlatform: this.numberPlatform,
       openingTime: this.openingTime,
       closingTime: this.closingTime,
@@ -34,10 +39,12 @@ export class Platform {
     };
   }
 
-  switchState() {
+  switchState(): Boolean {
     if (this.deleted)
       throw new Error("Cannot update state to deleted platform");
 
     this.state = !this.state;
+
+    return this.state;
   }
 }

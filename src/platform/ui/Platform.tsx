@@ -1,9 +1,10 @@
 import { usePlatformStoreImlementation } from "../infrastructure/store/platformStore.implementation";
-import { useLoadPlatformsRepositoryImplementation } from "../infrastructure/http/loadPlatforms/loadPlatforms.implementation";
+import { useLoadPlatformsRepositoryImplementation } from "../infrastructure/http";
 import { useLoadPlatforms } from "./hooks/useLoadPlatforms";
 import { useMenuStoreImplementation } from "../../shared/infrastructure/secondary/menu-store";
 import { useEffect } from "react";
-import { MENU } from "@/shared/domain/menu.enum";
+import { MENU } from "../../shared/domain/menu.enum";
+import { SwitchStateButton } from "./components";
 
 function GoBack() {
   const { setMenu } = useMenuStoreImplementation();
@@ -27,7 +28,8 @@ export default function Platform() {
       <h1>Platforms</h1>
       {store.platforms?.map((platform) => (
         <div key={platform.numberPlatform}>
-          {platform.numberPlatform} - {`${platform.state}`}
+          {platform.numberPlatform} - Estado: {`${platform.state}`}
+          <SwitchStateButton platform={platform} />
         </div>
       ))}
       <GoBack />

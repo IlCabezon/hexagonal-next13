@@ -4,5 +4,5 @@ export interface LoadPlatformsDto {
   closingTime: string;
   Ability: string;
   state: string;
-  deleted: boolean;
+  deleted: Boolean;
 }

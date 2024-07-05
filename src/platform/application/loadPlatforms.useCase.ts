@@ -1,12 +1,12 @@
 import { Platform } from "../domain/platform.entity";
 import { ILoadPlatformsUseCase } from "../domain/ports/primary/loadPlatform.useCase.interface";
-import { ILoadPlatformsRepository } from "../domain/ports/secondary/loadPlatform.repository.interface";
+import { IPlatformRepository } from "../domain/ports/secondary/platformRepository.interface";
 import { IPlatformStore } from "../domain/ports/secondary/platformStore.interface";
 
 export class LoadPlatformsUseCase implements ILoadPlatformsUseCase {
-  _repository: ILoadPlatformsRepository;
+  _repository: Partial<IPlatformRepository>;
   _store: IPlatformStore;
-  constructor(repository: ILoadPlatformsRepository, store: IPlatformStore) {
+  constructor(repository: Partial<IPlatformRepository>, store: IPlatformStore) {
     this._repository = repository;
     this._store = store;
   }
