@@ -1,5 +1,5 @@
-import { ICookieHandler } from "@/shared/domain/ports/secondary/cookiesHandler.interface";
-import { CookiesEnum } from "@/shared/domain/cookies.enum";
+import { ICookieHandler } from "../../../domain/ports/secondary/cookiesHandler.interface";
+import { CookiesEnum } from "../../../domain/cookies.enum";
 import { JSCookieHandler } from "../../secondary/jsCookie";
 
 interface IHeaders {
@@ -57,25 +57,26 @@ class Http {
     }
   }
 
-  async post<T>(url: string, body: any): Promise<T> {
+  async post<T, B>(url: string, body: B): Promise<T> {
     const response = await fetch(url, {
       method: "POST",
       headers: {
         ...this.headers,
       },
-      body,
+      body: JSON.stringify(body),
     });
 
     return response.json();
   }
 
-  async patch<T>(url: string, body: any): Promise<T> {
+  async patch<T, B>(url: string, body: B): Promise<T> {
     const response = await fetch(url, {
       method: "PATCH",
       headers: {
+        "content-type": "application/json",
         ...this.headers,
       },
-      body,
+      body: JSON.stringify(body),
     });
 
     return await response.json();
