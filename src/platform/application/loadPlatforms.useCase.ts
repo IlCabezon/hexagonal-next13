@@ -13,8 +13,8 @@ export class LoadPlatformsUseCase implements ILoadPlatformsUseCase {
     this._store = store;
   }
 
-  async loadPlatforms(): Promise<Platform[]> {
-    const platforms = await this._repository.loadPlatforms!();
+  async loadPlatforms(signal?: AbortSignal): Promise<Platform[]> {
+    const platforms = await this._repository.loadPlatforms!(signal);
 
     this._store.loadPlatforms(platforms);
     return platforms;

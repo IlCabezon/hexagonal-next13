@@ -15,7 +15,7 @@ function Home() {
 }
 
 export default function AppRoutes() {
-  const { menu, setMenu } = useMenuStoreImplementation();
+  const { menu } = useMenuStoreImplementation();
   const pathname = usePathname();
 
   const routes = {

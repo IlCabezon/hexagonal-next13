@@ -16,7 +16,7 @@ export const useLoadPlatforms = (
   );
 
   const loadPlatforms = useCallback(
-    async () => await useCase.loadPlatforms(),
+    async (signal?: AbortSignal) => await useCase.loadPlatforms(signal),
     []
   );
 

@@ -41,13 +41,14 @@ class Http {
     return token.userToken;
   }
 
-  async get<T>(url: string): Promise<T | undefined> {
+  async get<T>(url: string, signal?: AbortSignal): Promise<T | undefined> {
     try {
       const response = await fetch(url, {
         method: "GET",
         headers: {
           ...this.headers,
         },
+        signal
       });
 
       return response.json();

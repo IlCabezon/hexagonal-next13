@@ -4,9 +4,10 @@ import { Platform, IPlatformRepository } from "../../../platform/domain";
 import { SwitchPlatformStateDto } from "./dto/switchPlatformState-request.dto";
 
 export class PlatformRepository implements IPlatformRepository {
-  async loadPlatforms(): Promise<Platform[]> {
+  async loadPlatforms(signal: AbortSignal): Promise<Platform[]> {
     const response = await http.get<ResponseBaseDto<Platform[]>>(
-      `http://localhost:3001/${API_PATHS.PLATFORM}`
+      `http://localhost:3001/${API_PATHS.PLATFORM}`,
+      signal
     );
 
     if (!response?.data) {

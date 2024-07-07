@@ -3,7 +3,10 @@ import { MENU } from "../../shared/domain";
 import { useMenuStoreImplementation } from "../../shared/infrastructure";
 import { useLoadPlatforms } from "./hooks";
 import { SwitchStateButton } from "./components";
-import { usePlatformStoreImlementation, useLoadPlatformsRepositoryImplementation } from "../infrastructure";
+import {
+  usePlatformStoreImlementation,
+  useLoadPlatformsRepositoryImplementation,
+} from "../infrastructure";
 
 function GoBack() {
   const { setMenu } = useMenuStoreImplementation();
@@ -16,10 +19,15 @@ export default function Platform() {
   const { loadPlatforms } = useLoadPlatforms(repository, store);
 
   useEffect(() => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     const initialize = async () => {
-      await loadPlatforms();
+      await loadPlatforms(signal);
     };
     initialize();
+
+    return () => controller.abort();
   }, [loadPlatforms]);
 
   return (
