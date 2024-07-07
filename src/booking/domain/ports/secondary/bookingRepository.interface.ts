@@ -1,6 +1,6 @@
-import { Booking } from "../../booking.entity";
+import { IBooking } from "../../booking.entity";
 
 export interface IBookingRepository {
-  loadBookings(): Promise<Booking[]>;
-  getBookingById(_id: string): Promise<Booking>;
+  loadBookings(): Promise<IBooking[]>;
+  getBookingById(_id: string): Promise<IBooking>;
 }

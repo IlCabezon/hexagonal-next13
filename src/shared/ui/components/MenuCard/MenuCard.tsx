@@ -9,7 +9,7 @@ export interface CardMenuProps {
   handleClick: () => void;
 }
 
-export function MenuCard({
+export default function MenuCard({
   icons,
   title,
   description,

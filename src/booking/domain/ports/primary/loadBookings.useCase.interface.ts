@@ -1,5 +1,5 @@
-import { Booking } from "../../booking.entity";
+import { IBooking } from "../../booking.entity";
 
 export interface ILoadBookingUseCase {
-  loadBookings(): Promise<Booking[]>;
+  loadBookings(): Promise<IBooking[]>;
 }

@@ -1,8 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Booking, IBookingState, STORE_NAME } from "../../domain";
+import {
+  BookingStates,
+  IBooking,
+  IBookingState,
+  STORE_NAME,
+} from "../../domain";
 
 const initialState: IBookingState = {
   bookings: undefined,
+  bookingsCopy: undefined,
   currentBooking: undefined,
 };
 
@@ -12,11 +18,19 @@ export const bookingSlice = createSlice({
   name: storeName,
   initialState,
   reducers: {
-    loadBookings(state, newData: PayloadAction<Booking[]>) {
+    loadBookings(state, newData: PayloadAction<IBooking[]>) {
       state.bookings = newData.payload;
+      state.bookingsCopy = newData.payload
     },
-    setCurrentBooking(state, newData: PayloadAction<Booking>) {
+    setCurrentBooking(state, newData: PayloadAction<IBooking>) {
       state.currentBooking = newData.payload;
+    },
+    filterBookingsByState(state, newData: PayloadAction<BookingStates | null>) {
+      state.bookings = !newData.payload
+        ? state.bookingsCopy
+        : state.bookings?.filter(
+            (booking) => booking.state === newData.payload
+          );
     },
   },
 });

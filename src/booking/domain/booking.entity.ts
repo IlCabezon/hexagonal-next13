@@ -1,3 +1,5 @@
+import { BookingStates } from "./bookingStates.enum";
+
 export interface IBooking {
   _id: string;
   customer: string;
@@ -18,7 +20,7 @@ export interface IBooking {
   peonetaRut: string;
   observations: string;
   deleted?: boolean;
-  state: string;
+  state: BookingStates;
 }
 
 export class Booking {
@@ -41,7 +43,7 @@ export class Booking {
   peonetaRut: string;
   observations: string;
   deleted?: boolean;
-  state: string;
+  state: BookingStates;
 
   constructor(booking: IBooking) {
     this._id = booking._id;

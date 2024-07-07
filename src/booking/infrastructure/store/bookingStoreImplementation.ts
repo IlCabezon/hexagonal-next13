@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { Booking, IBookingStore } from "../../domain";
+import { Booking, BookingStates, IBooking, IBookingStore } from "../../domain";
 import { RootState, useAppDispatch, useAppSelector } from "../../../config";
 import { bookingSlice } from "./bookingSlice";
 
@@ -7,6 +7,7 @@ const bookingSelector = (state: RootState) => state.bookingSlice;
 const {
   loadBookings: loadBookingsAction,
   setCurrentBooking: setCurrentBookingAction,
+  filterBookingsByState: filterBookingsByStateAction,
 } = bookingSlice.actions;
 
 export const useBookingStoreImplementation = (): IBookingStore => {
@@ -14,7 +15,7 @@ export const useBookingStoreImplementation = (): IBookingStore => {
   const dispatch = useAppDispatch();
 
   const loadBookings = useCallback(
-    (bookings: Booking[]) => dispatch(loadBookingsAction(bookings)),
+    (bookings: IBooking[]) => dispatch(loadBookingsAction(bookings)),
     [dispatch]
   );
 
@@ -23,5 +24,16 @@ export const useBookingStoreImplementation = (): IBookingStore => {
     [dispatch]
   );
 
-  return { bookings, currentBooking, loadBookings, setCurrentBooking };
+  const filterBookingsByState = useCallback(
+    (state: BookingStates) => dispatch(filterBookingsByStateAction(state)),
+    [dispatch]
+  );
+
+  return {
+    bookings,
+    currentBooking,
+    loadBookings,
+    setCurrentBooking,
+    filterBookingsByState,
+  };
 };

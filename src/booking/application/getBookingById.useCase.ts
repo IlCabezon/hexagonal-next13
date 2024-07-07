@@ -16,6 +16,6 @@ export class GetBookinByIdUseCase implements IGetBookingByIdUseCase {
   async getBookingById(_id: string): Promise<Booking> {
     const booking = await this._repository.getBookingById(_id);
     this._store.setCurrentBooking(booking);
-    return booking;
+    return booking as Booking;
   }
 }

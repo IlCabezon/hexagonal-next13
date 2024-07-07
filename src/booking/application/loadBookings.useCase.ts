@@ -1,5 +1,5 @@
 import {
-  Booking,
+  IBooking,
   IBookingRepository,
   IBookingStore,
   ILoadBookingUseCase,
@@ -13,7 +13,7 @@ export class LoadBookingsUseCase implements ILoadBookingUseCase {
     this._store = store;
   }
 
-  async loadBookings(): Promise<Booking[]> {
+  async loadBookings(): Promise<IBooking[]> {
     const bookings = await this._repository.loadBookings!();
     this._store.loadBookings(bookings);
     return bookings;

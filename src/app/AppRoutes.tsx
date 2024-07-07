@@ -9,6 +9,7 @@ import {
 } from "../shared/ui";
 import Platform from "../platform/ui/Platform";
 import Booking from "../booking/ui/Booking";
+import { FilterIcon } from "../shared/ui/components/icons";
 
 function Home() {
   const { setMenu } = useMenuStoreImplementation();
@@ -21,6 +22,7 @@ function Home() {
       <div className="row justify-content-center align-items-center mt-4">
         <div className="col-auto">
           <MenuCard
+            icons={<FilterIcon />}
             title={platformAdministrationTexts.MENU_LIST_TITLE}
             description={platformAdministrationTexts.MENU_LIST_DESCRIPTION}
             buttonText={platformAdministrationTexts.MENU_LIST_BUTTON}
@@ -29,6 +31,7 @@ function Home() {
         </div>
         <div className="col-auto">
           <MenuCard
+            icons={<FilterIcon />}
             title={listRequestsTexts.MENU_LIST_TITLE}
             description={listRequestsTexts.MENU_LIST_DESCRIPTION}
             buttonText={listRequestsTexts.MENU_LIST_BUTTON}

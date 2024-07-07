@@ -1,11 +1,11 @@
 import { BOOKINGS_API_PATHS } from "../../../shared/domain";
 import { http } from "../../../shared/infrastructure";
 import { ResponseBaseDto } from "../../../shared/infrastructure";
-import { Booking, IBookingRepository } from "../../domain";
+import { IBooking, IBookingRepository } from "../../domain";
 
 export class BookingRepository implements IBookingRepository {
   async loadBookings() {
-    const response = await http.get<ResponseBaseDto<Booking[]>>(
+    const response = await http.get<ResponseBaseDto<IBooking[]>>(
       `http://localhost:3001/${BOOKINGS_API_PATHS.BOOKINGS}`
     );
 
@@ -17,7 +17,7 @@ export class BookingRepository implements IBookingRepository {
   }
 
   async getBookingById(_id: string) {
-    const response = await http.get<ResponseBaseDto<Booking>>(
+    const response = await http.get<ResponseBaseDto<IBooking>>(
       `http://localhost:3001${BOOKINGS_API_PATHS.BOOKINGS}/${_id}`
     );
 
