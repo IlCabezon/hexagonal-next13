@@ -4,7 +4,7 @@ export const PLATFORM_API_PATHS = {
   SWITCH_PLATFORM_STATE: `${PLATFORM_BASE_URL}/switch-state`,
 };
 
-export const BOOKING_BASE_URL = "api/infulf/rsv-products/v1/booking";
+export const BOOKING_BASE_URL = "api/infulf/rsv-products/v1/bookings";
 export const BOOKINGS_API_PATHS = {
   BOOKINGS: BOOKING_BASE_URL,
 };

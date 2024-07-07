@@ -6,7 +6,7 @@ import { Booking, IBookingRepository } from "../../domain";
 export class BookingRepository implements IBookingRepository {
   async loadBookings() {
     const response = await http.get<ResponseBaseDto<Booking[]>>(
-      `http://localhost:3000/${BOOKINGS_API_PATHS.BOOKINGS}`
+      `http://localhost:3001/${BOOKINGS_API_PATHS.BOOKINGS}`
     );
 
     if (!response?.data) {
@@ -18,7 +18,7 @@ export class BookingRepository implements IBookingRepository {
 
   async getBookingById(_id: string) {
     const response = await http.get<ResponseBaseDto<Booking>>(
-      `http://localhost:3000${BOOKINGS_API_PATHS.BOOKINGS}/${_id}`
+      `http://localhost:3001${BOOKINGS_API_PATHS.BOOKINGS}/${_id}`
     );
 
     if (!response?.data) {

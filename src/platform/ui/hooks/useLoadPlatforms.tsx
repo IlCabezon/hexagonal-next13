@@ -7,7 +7,7 @@ import {
 } from "../../domain";
 
 export const useLoadPlatforms = (
-  repository: IPlatformRepository,
+  repository: Partial<IPlatformRepository>,
   store: IPlatformStore
 ): ILoadPlatformsUseCase => {
   const useCase = useMemo(
