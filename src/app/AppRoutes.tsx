@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import { usePathname } from "next/navigation";
 import { MENU } from "../shared/domain/menu.enum";
 import { useMenuStoreImplementation } from "../shared/infrastructure";
@@ -10,6 +10,9 @@ import {
 import Platform from "../platform/ui/Platform";
 import Booking from "../booking/ui/Booking";
 import { FilterIcon } from "../shared/ui/components/icons";
+
+const PlatformModule = lazy(() => import("../platform/ui/Platform"));
+const BookingModule = lazy(() => import("../booking/ui/Booking"));
 
 function Home() {
   const { setMenu } = useMenuStoreImplementation();
@@ -49,9 +52,13 @@ export default function AppRoutes() {
 
   const routes = {
     [MENU.HOME]: () => <Home />,
-    [MENU.ANDENES]: () => <Platform />,
-    [MENU.LIST_REQUESTS]: () => <Booking />,
+    [MENU.ANDENES]: () => <PlatformModule />,
+    [MENU.LIST_REQUESTS]: () => <BookingModule />,
   };
 
-  return routes[menu]() || routes[MENU.HOME]();
+  return (
+    <Suspense fallback={<div>cargando...</div>}>
+      {routes[menu]() || routes[MENU.HOME]()}
+    </Suspense>
+  );
 }

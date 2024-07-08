@@ -14,6 +14,7 @@ interface IListRequestsTexts {
   LIST_REQUEST_TABLE_HEADER_STATE: string;
   LIST_REQUEST_TABLE_HEADER_ACTION: string;
   LIST_REQUEST_STATE_FILTER_ANY_VALUE: string;
+  LIST_REQUEST_TABLE_FILTER_NEW_BOOKING: string;
 }
 
 export const listRequestsTexts: IListRequestsTexts = {
@@ -33,4 +34,5 @@ export const listRequestsTexts: IListRequestsTexts = {
   LIST_REQUEST_TABLE_HEADER_STATE: "Estado",
   LIST_REQUEST_TABLE_HEADER_ACTION: "Acciones",
   LIST_REQUEST_STATE_FILTER_ANY_VALUE: "Todos",
+  LIST_REQUEST_TABLE_FILTER_NEW_BOOKING: "Nueva solicitud",
 };

@@ -13,9 +13,22 @@ export class LoadBookingsUseCase implements ILoadBookingUseCase {
     this._store = store;
   }
 
-  async loadBookings(): Promise<IBooking[]> {
-    const bookings = await this._repository.loadBookings!();
-    this._store.loadBookings(bookings);
-    return bookings;
+  async loadBookings(
+    initialDate: string,
+    endDate: string,
+    email: string | undefined
+  ): Promise<IBooking[]> {
+    try {
+      const bookings = await this._repository.loadBookings!(
+        initialDate,
+        endDate,
+        email
+      );
+      this._store.loadBookings(bookings);
+      return bookings;
+    } catch (err) {
+      this._store.loadBookings([]);
+      return []
+    }
   }
 }

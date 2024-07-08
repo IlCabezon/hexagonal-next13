@@ -15,9 +15,12 @@ export const useLoadBookings = (
     [repository, store]
   );
 
-  const loadBookings = useCallback(async () => {
-    return await useCase.loadBookings();
-  }, []);
+  const loadBookings = useCallback(
+    async (startDate: string, endDate: string, email: string | undefined) => {
+      return await useCase.loadBookings(startDate, endDate, email);
+    },
+    []
+  );
 
   return { loadBookings };
 };

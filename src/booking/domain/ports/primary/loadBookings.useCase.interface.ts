@@ -1,5 +1,9 @@
 import { IBooking } from "../../booking.entity";
 
 export interface ILoadBookingUseCase {
-  loadBookings(): Promise<IBooking[]>;
+  loadBookings(
+    initialDate: string,
+    endDate: string,
+    email?: string
+  ): Promise<IBooking[]>;
 }

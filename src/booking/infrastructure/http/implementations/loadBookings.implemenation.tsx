@@ -6,9 +6,12 @@ export const useLoadBookingRepositoryImplementation =
   (): Partial<IBookingRepository> => {
     const repository = useMemo(() => new BookingRepository(), []);
 
-    const loadBookings = useCallback(async () => {
-      return await repository.loadBookings();
-    }, [repository]);
+    const loadBookings = useCallback(
+      async (initialDate: string, endDate: string, email?: string) => {
+        return await repository.loadBookings(initialDate, endDate, email);
+      },
+      [repository]
+    );
 
     return { loadBookings };
   };
