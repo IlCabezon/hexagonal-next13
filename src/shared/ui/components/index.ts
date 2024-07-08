@@ -21,3 +21,4 @@ export { default as UserIcon } from "./icons/user";
 export { default as WarningIcon } from "./icons/warning";
 export { default as MenuCard } from "./MenuCard/MenuCard";
 export { default as TableComponent } from "./TableComponent/TableComponent";
+export { default as Modal } from "./Modal/Modal";

@@ -6,13 +6,13 @@ import {
   MenuCard,
   listRequestsTexts,
   platformAdministrationTexts,
+  weeklyAgendaTexts,
 } from "../shared/ui";
-import Platform from "../platform/ui/Platform";
-import Booking from "../booking/ui/Booking";
 import { FilterIcon } from "../shared/ui/components/icons";
 
 const PlatformModule = lazy(() => import("../platform/ui/Platform"));
-const BookingModule = lazy(() => import("../booking/ui/Booking"));
+const BookingModule = lazy(() => import("../booking/ui/pages/BookingsList"));
+const WeeklyAgenda = lazy(() => import("../booking/ui/pages/WeeklyAgenda"));
 
 function Home() {
   const { setMenu } = useMenuStoreImplementation();
@@ -22,8 +22,8 @@ function Home() {
       <div className="row justify-content-center align-items-center">
         <h1 className="col-auto page-title home-title">Modulo Fullfilment</h1>
       </div>
-      <div className="row justify-content-center align-items-center mt-4">
-        <div className="col-auto">
+      <div className="d-flex flex-wrap justify-content-center align-items-center mt-4 gap-4">
+        <div>
           <MenuCard
             icons={<FilterIcon />}
             title={platformAdministrationTexts.MENU_LIST_TITLE}
@@ -32,13 +32,22 @@ function Home() {
             handleClick={() => setMenu(MENU.ANDENES)}
           />
         </div>
-        <div className="col-auto">
+        <div>
           <MenuCard
             icons={<FilterIcon />}
             title={listRequestsTexts.MENU_LIST_TITLE}
             description={listRequestsTexts.MENU_LIST_DESCRIPTION}
             buttonText={listRequestsTexts.MENU_LIST_BUTTON}
             handleClick={() => setMenu(MENU.LIST_REQUESTS)}
+          />
+        </div>
+        <div>
+          <MenuCard
+            icons={<FilterIcon />}
+            title={weeklyAgendaTexts.MENU_WEEKLY_AGENDA_TITLE}
+            description={weeklyAgendaTexts.MENU_WEEKLY_AGENDA_DESCRIPTION}
+            buttonText={weeklyAgendaTexts.MENU_WEEKLY_BUTTON}
+            handleClick={() => setMenu(MENU.WEEKLY_AGENDA)}
           />
         </div>
       </div>
@@ -54,6 +63,7 @@ export default function AppRoutes() {
     [MENU.HOME]: () => <Home />,
     [MENU.ANDENES]: () => <PlatformModule />,
     [MENU.LIST_REQUESTS]: () => <BookingModule />,
+    [MENU.WEEKLY_AGENDA]: () => <WeeklyAgenda />,
   };
 
   return (

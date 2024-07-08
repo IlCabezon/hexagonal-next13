@@ -35,11 +35,3 @@
 .form-input-with-icon:focus {
   outline: none;
 }
-
-.new-request-text {
-  color: #fff;
-}
-
-.new-request-icon {
-  margin-right: 12px;
-}

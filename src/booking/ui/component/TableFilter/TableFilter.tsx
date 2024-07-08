@@ -1,10 +1,8 @@
 import styles from "./tableFilter.module.css";
-import { Button } from "@bxreact/button/index";
-import { SearchIcon, AddIcon, listRequestsTexts } from "../../../../shared/ui";
+import { SearchIcon } from "../../../../shared/ui";
+import GoWeeklyAgenda from "../GoWeeklyAgenda/GoWeeklyAgenda";
 
-type Props = {};
-
-export default function TableFilter({}: Props) {
+export default function TableFilter() {
   return (
     <div className="row d-flex">
       <div className="col-10">
@@ -15,19 +13,12 @@ export default function TableFilter({}: Props) {
           <input
             className={styles["form-input-with-icon"]}
             placeholder="Buscar"
-            onChange={() => {}}
+            onChange={() => {}} // TODO
           ></input>
         </div>
       </div>
       <div className="col-2 mt-3">
-        <Button type="button" onClick={() => {}}>
-          <span className={styles["new-request-icon"]}>
-            <AddIcon />
-          </span>
-          <span className={styles["new-request-text"]}>
-            {listRequestsTexts.LIST_REQUEST_TABLE_FILTER_NEW_BOOKING}
-          </span>
-        </Button>
+        <GoWeeklyAgenda />
       </div>
     </div>
   );
